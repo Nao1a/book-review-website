@@ -6,6 +6,6 @@ import authMiddleware  from '../middleware/authMiddleware.js'
 
 const router = express.Router();
 // Search for books (accessible only to logged-in users)
-router.get('/search', authMiddleware, searchBook);
+router.get('/search', searchBook);
 
 export default router 
