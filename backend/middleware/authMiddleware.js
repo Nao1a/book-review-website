@@ -13,12 +13,7 @@ const authMiddleware = (req, res, next) => {
     }
   }
 
-const x = (req, res, next) => {
-  if(req.isAuthenticated()){
-    return next();
-  }
-  res.status(401).json({error: 'you must be logged in to acess this resource'})
-}
+
   
-export default {authMiddleware, x}
+export default authMiddleware
 

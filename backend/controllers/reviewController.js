@@ -1,31 +1,31 @@
 import Review from "../models/Review.js"
 
-const createReview = async(req, res) => {
-    const{ bookId, rating, comment} = req.body;
-    const UserId = req.user.UserId
-
-
-    if (!bookId || !rating || !comment){
-        return res.satus(400).json({message: "All fields are required."})
-    }
+export const addReview = async (req, res) => {
+    const{bookId, bookTitle, rating, comment} = req.body
+    const userId = req.user._id;
+    const username = req.user.username;
 
     try{
-        const newReview = new Review ({bookId, UserId, rating, comment});
+        const newReview = new Review({
+            bookId,bookTitle,userId,username,rating, comment,
+        })
         await newReview.save();
-        res.satus(201).json(newReview);
-    } catch(error){
-        res.satus(500).json({message: 'server error'});
+        res.status(201).json({message: 'Review added successfully'})
+    }catch (error){
+        res.status(500).json({message: 'Error saving review'})
     }
-};
+}
 
-const getReviewsByBook = async(req, res) => {
-    const {bookId} = req.parmas;
+export const getReviews = async(req, res) => {
+    const {bookId} = req.params
 
-    try {
-        const reviews = await Review.find({bookId}).populate('userId', "username");
-        res.status(200).json(reviews);
-    }catch(error){
-        res.status(500).json({message: "server error"})
+    try{
+        const reviews = await Review.find({bookId});
+
+        if(reviews.legth === 0) {
+            return res.status(404).json({message: 'No reviews for this book'})
+        }
+    }catch (error){
+        res.status(500).json({error: 'Error fetching reviews'})
     }
-};
-
+}
