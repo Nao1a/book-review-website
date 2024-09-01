@@ -25,7 +25,7 @@ const getReviewsByBook = async(req, res) => {
         const reviews = await Review.find({bookId}).populate('userId', "username");
         res.status(200).json(reviews);
     }catch(error){
-        res.status(500).json({messahe: "server error"})
+        res.status(500).json({message: "server error"})
     }
 };
 

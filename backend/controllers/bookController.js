@@ -1,5 +1,5 @@
 import https from 'https'
-export const searchBook = (req, res) => {
+const searchBook = (req, res) => {
     const { query } = req.query;
     if (!query) {
         return res.status(400).json({ error: 'Please provide a search query' });
@@ -41,3 +41,4 @@ export const searchBook = (req, res) => {
     });
 };
 
+export default searchBook
