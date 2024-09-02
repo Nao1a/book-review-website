@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const domain = "http://localhost:8000";
+  const domain = "https://book-review-website-lq06.onrender.com";
 
   const currentUrl = new URL(window.location.href);
   const urlId = currentUrl.searchParams.get("id");

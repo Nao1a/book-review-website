@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const domain = "http://localhost:8000";
+  const domain = "https://book-review-website-lq06.onrender.com";
   fetchBooks();
   checkUser();
 
