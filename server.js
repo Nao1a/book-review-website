@@ -16,6 +16,7 @@ connectDB();
 
 app.use('/api/auth', auth)
 app.use('/api/books', books)
+app.use(express.static('./frontend'))
 
 const port = process.env.PORT || 3001;
 app.listen(port, console.log("Server is listening on port", port));

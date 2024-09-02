@@ -7,7 +7,7 @@ const ReviewSchema = new mongoose.Schema({
   bookTitle: { type: String, required: true }, 
   bookId: {type:String, required: true},
   rating: { type: Number, min: 1, max: 5 }, // a rating system with a minimum value of 1 and maximum value of 5
-  comment: [String], // comments about the book 
+  comment: {type:String, required: true},// comments about the book 
 });
 
 const Review = mongoose.model('Review', ReviewSchema);
