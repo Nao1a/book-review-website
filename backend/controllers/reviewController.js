@@ -35,7 +35,7 @@ export const getReviews = async(req, res) => {
 
     try{
         const reviews = await Review.find({bookId});
-         console.log(reviews);
+        res.status(201).json({reviews})
 
         if(reviews.legth === 0) {
             return res.status(404).json({message: 'No reviews for this book'})
