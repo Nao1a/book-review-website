@@ -21,8 +21,10 @@ function searchBook (req, res) {
                 const result = JSON.parse(data);
 
                 const books = result.items.map(item => {
-                    const { title, authors, publishedDate, imageLinks, infoLink } = item.volumeInfo;
+                    const {id, volumeInfo} = item
+                    const { title, authors, publishedDate, imageLinks, infoLink } = volumeInfo;
                     return {
+                        bookId: id,
                         title,
                         authors,
                         publishedDate,
@@ -40,5 +42,4 @@ function searchBook (req, res) {
         res.status(500).json({ error: 'Error searching for books' });
     });
 };
-console.log(typeof searchBook);
 export default searchBook
