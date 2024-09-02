@@ -101,10 +101,8 @@ export const searchBook = async (req, res) => {
                 const result = JSON.parse(data);
 
                 const books = result.items.map(item => {
-                    const id = item.id
-                    const { title, description, authors, pageCount, publishedDate, imageLinks, infoLink } = item.volumeInfo;
+                    const { title, authors, publishedDate, imageLinks, infoLink } = item.volumeInfo;
                     return {
-                        id,
                         title,
                         description,
                         authors,
@@ -124,4 +122,5 @@ export const searchBook = async (req, res) => {
         res.status(500).json({ error: 'Error searching for books' });
     });
 };
-
+console.log(typeof searchBook);
+export default searchBook
