@@ -93,6 +93,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
 
       if(response.ok) {
+        document.getElementById("rate").value = ''
         document.getElementById("reviewMessage").value = ''
       }
 

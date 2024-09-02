@@ -22,13 +22,11 @@ export const addReview = async (req, res) => {
     }
 };
 
-
 export const getReviews = async(req, res) => {
     const {bookId} = req.params
 
     try{
         const reviews = await Review.find({bookId});
-        res.status(201).json({reviews})
 
         if(reviews.length === 0) {
             return res.status(404).json({message: 'No reviews for this book'})
@@ -36,6 +34,7 @@ export const getReviews = async(req, res) => {
 
         res.json(reviews)
     }catch (error){
+        console.log(error)
         res.status(500).json({error: 'Error fetching reviews'})
     }
 }

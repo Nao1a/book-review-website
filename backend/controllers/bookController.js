@@ -101,8 +101,10 @@ export const searchBook = async (req, res) => {
                 const result = JSON.parse(data);
 
                 const books = result.items.map(item => {
-                    const { title, authors, publishedDate, imageLinks, infoLink } = item.volumeInfo;
+                    const id = item.id
+                    const { title, description, authors, pageCount, publishedDate, imageLinks, infoLink } = item.volumeInfo;
                     return {
+                        id,
                         title,
                         description,
                         authors,
@@ -115,12 +117,15 @@ export const searchBook = async (req, res) => {
 
                 res.json(books);
             } catch (error) {
+                console.log('Error: ' + error)
                 res.status(500).json({ error: 'Error parsing book data' });
             }
         });
     }).on('error', (error) => {
+        console.log(error)
         res.status(500).json({ error: 'Error searching for books' });
     });
 };
+
 console.log(typeof searchBook);
 export default searchBook
