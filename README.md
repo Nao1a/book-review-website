@@ -14,3 +14,9 @@ LOGIC
 the logic of this website goes like this. the signup and login proces
 
 You can check : https://book-review-website-lq06.onrender.com
+
+Group Members
+1. Naol Mulisa
+2. Adomiyas Daniel
+3. Hallelujah ezra
+4. Yonatan Tadese
