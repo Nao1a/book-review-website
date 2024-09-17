@@ -19,4 +19,3 @@ Group Members
 1. Naol Mulisa
 2. Adomiyas Daniel
 3. Hallelujah ezra
-4. Yonatan Tadese
