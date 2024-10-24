@@ -2,17 +2,17 @@ import https from 'https'
 
 // This function give best seller books we use to home page
 export const topBooks = async (req, res) => {
-    const url = `https://www.googleapis.com/books/v1/volumes?q=world`;
+    const url = `https://www.googleapis.com/books/v1/volumes?q=subject:ScienceFiction`;
     https.get(url, (response) => {
-        let data = ''
+        let data = '';
         response.on('data', (chunk) => {
-            data += chunk
-        })
+            data += chunk;
+        });
         response.on('end', () => {
             try {
-                const result = JSON.parse(data)
+                const result = JSON.parse(data);
                 const books = result.items.map(item => {
-                    const id = item.id
+                    const id = item.id;
                     const { title, description, authors, pageCount, publishedDate, imageLinks, infoLink } = item.volumeInfo;
                     return {
                         id,
@@ -24,16 +24,21 @@ export const topBooks = async (req, res) => {
                         thumbnail: imageLinks?.thumbnail,
                         infoLink
                     };
-                })
+                });
 
-                res.json(books)
+                // Select a random book
+                const randomIndex = Math.floor(Math.random() * books.length);
+                const randomBook = books[randomIndex];
+
+                res.json(randomBook);
             } catch (error) {
-                console.log(`error: ${error}`)
+                console.log(`error: ${error}`);
                 res.status(500).json({ error: `Error parsing book data` });
             }
-        })
-    })
-}
+        });
+    });
+};
+
 
 // Book get by id
 export const getBook = async (req, res) => {
